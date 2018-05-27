@@ -1,0 +1,17 @@
+<project name="java tasks" default="run">
+<target name="compile" description="compiles the java files">
+<mkdir dir="build/classes"/>
+<javac srcdir="src" destdir="build/classes"/>
+</target>
+<target name="package" depends="compile" description="packing the files">
+<mkdir dir="build/classes"/>
+<jar destfile="build/jars/BinaryConverter.jar" basedir="build/classes">
+<manifest>
+<attribute name="Main-Class" value="BinaryConverter"/>
+</manifest>
+</jar>
+</target>
+<target name="run" depends="package" description="runs the packages">
+<java jar="build/jars/BinaryConverter.jar" fork="true"/>
+</target>
+</project>
